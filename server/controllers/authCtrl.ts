@@ -16,9 +16,7 @@ import {
   IUserParams,
   IReqAuth,
 } from "../config/interface";
-import mongoose from "mongoose";
 import { OAuth2Client } from "google-auth-library";
-import fetch from "node-fetch";
 import notificationCtrl from "./noticeCtrl";
 import Preferances from "../models/preferanceModel";
 
