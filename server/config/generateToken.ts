@@ -19,7 +19,7 @@ export const generateRefreshToken = (payload: object, res: Response) => {
   });
 
   res.cookie("refreshtoken", refresh_token, {
-    sameSite: "strict",
+    sameSite: "none",
     secure: true,
     httpOnly: true,
     path: `/api/refresh_token`,
