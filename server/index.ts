@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
     origin: `${process.env.BASE_URL}`,
-    // credentials: true,
+    credentials: true,
   })
 );
 app.use(morgan("dev"));
@@ -26,7 +26,7 @@ const http = createServer(app);
 export const io = new Server(http, {
   cors: {
     origin: `${process.env.BASE_URL}`,
-    // credentials: true,
+    credentials: true,
   },
 });
 import { SocketServer } from "./config/socket";
