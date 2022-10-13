@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import { Response } from "express";
-import { NONAME } from "dns";
 
 const { ACTIVE_TOKEN_SECRET, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } =
   process.env;
@@ -22,7 +21,7 @@ export const generateRefreshToken = (payload: object, res: Response) => {
     sameSite: "none",
     secure: true,
     httpOnly: true,
-    path: `/api/refresh_token`,
+    path: `https://pediageekapi.azurewebsites.net/api/refresh_token`,
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30days
   });
 
