@@ -4,7 +4,12 @@
   "description": "Pediageek is the best way to express your views to the world.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "ts-node-dev server/index.ts"
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev server/index.ts",
+    "build": "CI=false && tsc"
+  },
+  "engines": {
+    "node": "20.x"
   },
   "keywords": [
     "Blogging",
