@@ -9,9 +9,9 @@ const sendEmail = async (to: string, url: string, txt: string) => {
   const client = mailgun.client({ username: "api", key: API_KEY });
   (to);
   const messageData = {
-    from: "PediaGeek <signup@pediageek.com>",
+    from: "CrunchCave <signup@crunchcave.com>",
     to,
-    subject: "PediaGeek",
+    subject: "CrunchCave",
     html: `
               <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
               <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the <b>PEDIA<span style="color:green;">GEEK</span></b>.</h2>
@@ -66,7 +66,7 @@ export default sendEmail;
 //   const mailOptions = {
 //     from: SENDER_MAIL,
 //     to: to,
-//     subject: "PediaGeek",
+//     subject: "CrunchCave",
 // html: `
 //         <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
 //         <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the <b>PEDIA<span style="color:green;">GEEK</span></b>.</h2>

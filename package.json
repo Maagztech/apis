@@ -1,7 +1,7 @@
 {
-  "name": "pediageek",
+  "name": "crunchcave",
   "version": "1.0.0",
-  "description": "Pediageek is the best way to express your views to the world.",
+  "description": "Crunchcave is the best way to express your views to the world.",
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
@@ -16,7 +16,7 @@
     "learning",
     "write blog"
   ],
-  "author": "pediageek",
+  "author": "crunchcave",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

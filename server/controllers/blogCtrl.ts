@@ -38,7 +38,7 @@ const blogCtrl = {
       await newBlog.save();
       if (
         req.user.blogcount === 0 &&
-        req.user.referer !== "PediaGeek" &&
+        req.user.referer !== "CrunchCave" &&
         req.user.referer !== ""
       ) {
         balanceCtrl.updateReferalbalance(req.user.referer, req.user._id);

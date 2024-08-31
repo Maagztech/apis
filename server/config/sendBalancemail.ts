@@ -12,11 +12,11 @@ const sendBalancemail = async (
   const client = mailgun.client({ username: "api", key: API_KEY });
 
   const messageData = {
-    from: "PediaGeek <balance@pediageek.com>",
-    to: "contact@pediageek.com",
+    from: "CrunchCave <balance@crunchcave.com>",
+    to: "contact@crunchcave.com",
     subject: "Withdraw",
     html: `<p>Mobile Number: ${mobilenumber}</p>
-   <p>Profile url: pediageek.com/profile/${balance.user}</p>
+   <p>Profile url: crunchcave.com/profile/${balance.user}</p>
     <p>balance: ${balance.balance}</p>
     <p>Withdraw: ${withdraw}</p>
             `,

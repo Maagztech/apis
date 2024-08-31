@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
     about: {
       type: String,
       trim: true,
-      default: "I am using PediaGeek to Connect ,Learn and Grow.",
+      default: "I am using CrunchCave to Connect ,Learn and Grow.",
     },
     paytm: {
       type: String,
@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema(
     },
     referer: {
       type: String,
-      default: "PediaGeek",
+      default: "CrunchCave",
     },
     password: {
       type: String,

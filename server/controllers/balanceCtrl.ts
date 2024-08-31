@@ -49,7 +49,7 @@ const balanceCtrl = {
         );
         balance = await balance.save();
         res.json({
-          msg: "Successfull ! You will recive amount with in 30 minutes . If not received contact : contact@pediageek.com ",
+          msg: "Successfull ! You will recive amount with in 30 minutes . If not received contact : contact@crunchcave.com ",
           balance,
         });
       } else

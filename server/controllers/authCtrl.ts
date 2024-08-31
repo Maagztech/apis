@@ -72,11 +72,11 @@ const authCtrl = {
 
       notificationCtrl.addNotification(
         newuser._id,
-        "Welcome! to Pediageeks world.",
+        "Welcome! to Crunchcaves world.",
         "Hii! " +
           " " +
           newuser.name +
-          "on behalf of whole pediageek team we welcome you to the platform.Try each and every feature on platform make your own brand on the platform."
+          "on behalf of whole crunchcave team we welcome you to the platform.Try each and every feature on platform make your own brand on the platform."
       );
       if (newuser.referer !== "")
         notificationCtrl.addNotification(
@@ -393,11 +393,11 @@ const registerUser = async (user: IUserParams, res: Response) => {
   const regUser = await newUser.save();
   notificationCtrl.addNotification(
     regUser._id,
-    "Welcome! to Pediageeks world.",
+    "Welcome! to Crunchcaves world.",
     "Hii! " +
       " " +
       regUser.name +
-      " on behalf of whole pediageek team we welcome you to the platform. Create your First blog and earn 200-250 Rs. on evry 1000 Views on your blog."
+      " on behalf of whole crunchcave team we welcome you to the platform. Create your First blog and earn 200-250 Rs. on evry 1000 Views on your blog."
   );
   if (regUser.referer !== "")
     notificationCtrl.addNotification(
