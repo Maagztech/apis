@@ -1,25 +1,25 @@
-import { Request, Response } from "express";
-import Users from "../models/userModel";
 import bcrypt from "bcrypt";
+import { Request, Response } from "express";
+import { OAuth2Client } from "google-auth-library";
 import jwt from "jsonwebtoken";
 import {
-  generateActiveToken,
   generateAccessToken,
+  generateActiveToken,
   generateRefreshToken,
 } from "../config/generateToken";
-import sendMail from "../config/sendMail";
-import { validateEmail } from "../middleware/vaild";
 import {
   IDecodedToken,
-  IUser,
   IGgPayload,
-  IUserParams,
   IReqAuth,
+  IUser,
+  IUserParams,
 } from "../config/interface";
-import { OAuth2Client } from "google-auth-library";
-import notificationCtrl from "./noticeCtrl";
+import sendMail from "../config/sendMail";
+import { validateEmail } from "../middleware/vaild";
 import Preferances from "../models/preferanceModel";
-
+import Users from "../models/userModel";
+import notificationCtrl from "./noticeCtrl";
+const { ACTIVE_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 const client = new OAuth2Client(`${process.env.MAIL_CLIENT_ID}`);
 const CLIENT_URL = `${process.env.BASE_URL}`;
 
@@ -45,7 +45,7 @@ const authCtrl = {
       if (validateEmail(account)) {
         sendMail(account, url, "Verify your email address");
         return res.json({ msg: "Success! Please check your email." });
-      } 
+      }
     } catch (err: any) {
       return res.status(500).json({ msg: err.message });
     }
@@ -55,7 +55,7 @@ const authCtrl = {
       const { active_token } = req.body;
 
       const decoded = <IDecodedToken>(
-        jwt.verify(active_token, `${process.env.ACTIVE_TOKEN_SECRET}`)
+        jwt.verify(active_token, `${ACTIVE_TOKEN_SECRET}`)
       );
 
       const { newUser } = decoded;
@@ -74,17 +74,17 @@ const authCtrl = {
         newuser._id,
         "Welcome! to Crunchcaves world.",
         "Hii! " +
-          " " +
-          newuser.name +
-          "on behalf of whole crunchcave team we welcome you to the platform.Try each and every feature on platform make your own brand on the platform."
+        " " +
+        newuser.name +
+        "on behalf of whole crunchcave team we welcome you to the platform.Try each and every feature on platform make your own brand on the platform."
       );
       if (newuser.referer !== "")
         notificationCtrl.addNotification(
           newuser.referer,
           "Referal Update 🎁🎁.",
           "Hii! " +
-            newuser.name +
-            " have joined using your refral link tell him to write his first blog to earn referal reward both.",
+          newuser.name +
+          " have joined using your refral link tell him to write his first blog to earn referal reward both.",
           "/profile/" + newuser._id
         );
       res.json({ msg: "Account has been activated!" });
@@ -131,7 +131,7 @@ const authCtrl = {
       if (!rf_token) return res.status(400).json({ msg: "Please login now!" });
 
       const decoded = <IDecodedToken>(
-        jwt.verify(rf_token, `${process.env.REFRESH_TOKEN_SECRET}`)
+        jwt.verify(rf_token, `${REFRESH_TOKEN_SECRET}`)
       );
       if (!decoded.id)
         return res.status(400).json({ msg: "Please login now!" });
@@ -395,17 +395,17 @@ const registerUser = async (user: IUserParams, res: Response) => {
     regUser._id,
     "Welcome! to Crunchcaves world.",
     "Hii! " +
-      " " +
-      regUser.name +
-      " on behalf of whole crunchcave team we welcome you to the platform. Create your First blog and earn 200-250 Rs. on evry 1000 Views on your blog."
+    " " +
+    regUser.name +
+    " on behalf of whole crunchcave team we welcome you to the platform. Create your First blog and earn 200-250 Rs. on evry 1000 Views on your blog."
   );
   if (regUser.referer !== "")
     notificationCtrl.addNotification(
       regUser.referer,
       "Referal Update 🎁🎁.",
       "Hii! " +
-        regUser.name +
-        " have joined using your refral link tell him to write his first blog to earn referal reward both.",
+      regUser.name +
+      " have joined using your refral link tell him to write his first blog to earn referal reward both.",
       "/profile/" + regUser._id
     );
   res.json({

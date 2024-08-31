@@ -1,8 +1,8 @@
-const formData = require("form-data");
-const Mailgun = require("mailgun.js");
+import formData from "form-data";
+import Mailgun from "mailgun.js";
 
-const API_KEY = process.env.NODEMON_PRIVATE_API;
-const DOMAIN = process.env.NODEMON_DOMAIN;
+const API_KEY = process.env.NODEMON_PRIVATE_API || "";
+const DOMAIN = process.env.NODEMON_DOMAIN || "";
 
 const sendEmail = async (to: string, url: string, txt: string) => {
   const mailgun = new Mailgun(formData);
@@ -14,8 +14,8 @@ const sendEmail = async (to: string, url: string, txt: string) => {
     subject: "CrunchCave",
     html: `
               <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-              <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the <b>PEDIA<span style="color:green;">GEEK</span></b>.</h2>
-              <p>Congratulations! You're almost set to start using <b>PEDIA<span style="color:green;">GEEK</span></b>.
+              <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the <b>CRUNCH<span style="color:green;">CAVE</span></b>.</h2>
+              <p>Congratulations! You're almost set to start using <b>CRUNCH<span style="color:green;">CAVE</span></b>.
                   Just click the button below to validate your email address.
               </p>
 
@@ -69,8 +69,8 @@ export default sendEmail;
 //     subject: "CrunchCave",
 // html: `
 //         <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-//         <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the <b>PEDIA<span style="color:green;">GEEK</span></b>.</h2>
-//         <p>Congratulations! You're almost set to start using <b>PEDIA<span style="color:green;">GEEK</span></b>.
+//         <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the <b>CRUNCH<span style="color:green;">CAVE</span></b>.</h2>
+//         <p>Congratulations! You're almost set to start using <b>CRUNCH<span style="color:green;">CAVE</span></b>.
 //             Just click the button below to validate your email address.
 //         </p>
 
