@@ -1,8 +1,8 @@
+import formData from "form-data";
+import Mailgun from "mailgun.js";
 import { IBalance } from "./interface";
-const formData = require("form-data");
-const Mailgun = require("mailgun.js");
-const API_KEY = process.env.NODEMON_PRIVATE_API;
-const DOMAIN = process.env.NODEMON_DOMAIN;
+const API_KEY = process.env.NODEMON_PRIVATE_API || "";
+const DOMAIN = process.env.NODEMON_DOMAIN || "";
 const sendBalancemail = async (
   mobilenumber: string,
   withdraw: number,
@@ -10,7 +10,6 @@ const sendBalancemail = async (
 ) => {
   const mailgun = new Mailgun(formData);
   const client = mailgun.client({ username: "api", key: API_KEY });
-
   const messageData = {
     from: "CrunchCave <balance@crunchcave.com>",
     to: "contact@crunchcave.com",
